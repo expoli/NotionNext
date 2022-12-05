@@ -1,9 +1,9 @@
 // 注: process.env.XX是Vercel的环境变量，配置方式见：https://docs.tangly1024.com/zh/features/personality
 const BLOG = {
-  AUTHOR: 'tangcuyu', // 作者
-  BIO: '一个普通的干饭人🍚', // 作者简介
-  LINK: 'https://expoli.tech', // 网站地址
-  KEYWORDS: 'Notion, 博客, expoli, 糖醋鱼, tangcuyu', // 网站关键词 英文逗号隔开
+  AUTHOR: process.env.AUTHOR || 'tangcuyu', // 作者
+  BIO: process.env.BIO || '一个普通的干饭人🍚', // 作者简介
+  LINK: process.env.LINK || 'https://expoli.tech', // 网站地址
+  KEYWORDS: process.env.KEYWORDS || 'Notion, 博客, expoli, 糖醋鱼, tangcuyu', // 网站关键词 英文逗号隔开
   NOTION_PAGE_ID:
   process.env.NOTION_PAGE_ID || '02ab3b8678004aa69e9e415905ef32a5', // Important page_id！！！Duplicate Template from  https://www.notion.so/tanghh/02ab3b8678004aa69e9e415905ef32a5
   NOTION_ACCESS_TOKEN: process.env.NOTION_ACCESS_TOKEN || '', // Useful if you prefer not to make your database public
@@ -53,11 +53,11 @@ const BLOG = {
 
   // 社交链接，不需要可留空白，例如 CONTACT_WEIBO:''
   CONTACT_EMAIL: process.env.CONTACT_EMAIL || 'mail@tangly1024.com', // 邮箱
-  CONTACT_WEIBO: '', // 你的微博个人主页
-  CONTACT_TWITTER: '', // 你的twitter个人主页
+  CONTACT_WEIBO: process.env.CONTACT_WEIBO, // 你的微博个人主页
+  CONTACT_TWITTER: process.env.CONTACT_TWITTER, // 你的twitter个人主页
   CONTACT_GITHUB: process.env.CONTACT_GITHUB || 'https://github.com/tangly1024', // 你的github个人主页
-  CONTACT_TELEGRAM: process.env.CONTACT_TELEGRAM || 'https://t.me/tangly_1024', // 你的telegram 地址 例如 https://t.me/tangly_1024
-  CONTACT_LINKEDIN: '', // 你的linkedIn 首页
+  CONTACT_TELEGRAM: process.env.CONTACT_TELEGRAM, // 你的telegram 地址 例如 https://t.me/tangly_1024
+  CONTACT_LINKEDIN: process.env.CONTACT_LINKEDIN, // 你的linkedIn 首页
 
 
   // 鼠标点击烟花特效
