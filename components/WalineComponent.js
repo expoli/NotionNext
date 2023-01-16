@@ -2,6 +2,7 @@ import React from 'react'
 import { init } from '@waline/client'
 import BLOG from '@/blog.config'
 import { useRouter } from 'next/router'
+import '@waline/client/dist/waline.css'
 
 const path = ''
 let waline = null
@@ -15,7 +16,7 @@ const WalineComponent = (props) => {
   const router = useRouter()
 
   const updateWaline = url => {
-    if (url !== path) {
+    if (url !== path && waline) {
       waline.update(props)
     }
   }
@@ -25,7 +26,14 @@ const WalineComponent = (props) => {
       waline = init({
         ...props,
         el: containerRef.current,
-        serverURL: BLOG.COMMENT_WALINE_SERVER_URL
+        serverURL: BLOG.COMMENT_WALINE_SERVER_URL,
+        lang: BLOG.lang,
+        reaction: true,
+        emoji: [
+          '//npm.elemecdn.com/@waline/emojis@1.1.0/tieba',
+          '//npm.elemecdn.com/@waline/emojis@1.1.0/weibo',
+          '//npm.elemecdn.com/@waline/emojis@1.1.0/bilibili'
+        ]
       })
     }
 
@@ -60,8 +68,10 @@ const WalineComponent = (props) => {
     }
 
     return () => {
-      waline.destroy()
-      waline = null
+      if (waline) {
+        waline.destroy()
+        waline = null
+      }
       router.events.off('routeChangeComplete', updateWaline)
     }
   }, [])

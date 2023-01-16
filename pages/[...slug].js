@@ -8,6 +8,8 @@ import { idToUuid } from 'notion-utils'
 import Router from 'next/router'
 import { isBrowser } from '@/lib/utils'
 import { getNotion } from '@/lib/notion/getNotion'
+import { getPageTableOfContents } from '@/lib/notion/getPageTableOfContents'
+import md5 from 'js-md5'
 
 /**
  * 根据notion的slug访问页面
@@ -28,6 +30,11 @@ const Slug = props => {
     if (post?.password && post?.password !== '') {
       setLock(true)
     } else {
+      if (!lock && post?.blockMap?.block) {
+        post.content = Object.keys(post.blockMap.block)
+        post.toc = getPageTableOfContents(post, post.blockMap)
+      }
+
       setLock(false)
     }
   }, [post])
@@ -43,7 +50,7 @@ const Slug = props => {
         }
       }
     }, 20 * 1000)
-    const meta = { title: `${props?.siteInfo?.title || BLOG.TITLE} | loading`, image: siteInfo?.pageCover }
+    const meta = { title: `${props?.siteInfo?.title || BLOG.TITLE} | loading`, image: siteInfo?.pageCover || BLOG.HOME_BANNER_IMAGE }
     return <ThemeComponents.LayoutSlug {...props} showArticleInfo={true} meta={meta} />
   }
 
@@ -51,10 +58,14 @@ const Slug = props => {
    * 验证文章密码
    * @param {*} result
    */
-  const validPassword = result => {
-    if (result) {
+  const validPassword = passInput => {
+    const encrypt = md5(post.slug + passInput)
+
+    if (passInput && encrypt === post.password) {
       setLock(false)
+      return true
     }
+    return false
   }
 
   props = { ...props, lock, setLock, validPassword }
@@ -95,8 +106,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  // slug 是个数组
-  const fullSlug = slug.join('/')
+  let fullSlug = slug.join('/')
+  if (BLOG.PSEUDO_STATIC) {
+    if (!fullSlug.endsWith('.html')) {
+      fullSlug += '.html'
+    }
+  }
   const from = `slug-props-${fullSlug}`
   const props = await getGlobalNotionData({ from })
   props.post = props.allPages.find((p) => {
@@ -106,31 +121,34 @@ export async function getStaticProps({ params: { slug } }) {
   if (!props.post) {
     const pageId = slug.slice(-1)[0]
     if (pageId.length < 32) {
-      return { props, revalidate: 1 }
+      return { props, revalidate: parseInt(BLOG.NEXT_REVALIDATE_SECOND) }
     }
     const post = await getNotion(pageId)
     if (post) {
       props.post = post
     } else {
-      return { props, revalidate: 1 }
+      return { props, revalidate: parseInt(BLOG.NEXT_REVALIDATE_SECOND) }
     }
   } else {
     props.post.blockMap = await getPostBlocks(props.post.id, 'slug')
   }
 
   const allPosts = props.allPages.filter(page => page.type === 'Post' && page.status === 'Published')
-  const index = allPosts.indexOf(props.post)
-  props.prev = allPosts.slice(index - 1, index)[0] ?? allPosts.slice(-1)[0]
-  props.next = allPosts.slice(index + 1, index + 2)[0] ?? allPosts[0]
-  props.recommendPosts = getRecommendPost(
-    props.post,
-    allPosts,
-    BLOG.POST_RECOMMEND_COUNT
-  )
+  if (allPosts && allPosts.length > 0) {
+    const index = allPosts.indexOf(props.post)
+    props.prev = allPosts.slice(index - 1, index)[0] ?? allPosts.slice(-1)[0]
+    props.next = allPosts.slice(index + 1, index + 2)[0] ?? allPosts[0]
+    props.recommendPosts = getRecommendPost(props.post, allPosts, BLOG.POST_RECOMMEND_COUNT)
+  } else {
+    props.prev = null
+    props.next = null
+    props.recommendPosts = []
+  }
+
   delete props.allPages
   return {
     props,
-    revalidate: 1
+    revalidate: parseInt(BLOG.NEXT_REVALIDATE_SECOND)
   }
 }
 
