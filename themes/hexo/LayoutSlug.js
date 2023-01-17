@@ -10,6 +10,7 @@ import NotionPage from '@/components/NotionPage'
 import ArticleAdjacent from './components/ArticleAdjacent'
 import ArticleCopyright from './components/ArticleCopyright'
 import ArticleRecommend from './components/ArticleRecommend'
+import ArticleWechatSpread from './components/ArticleWechatSpread'
 import { isBrowser } from '@/lib/utils'
 
 export const LayoutSlug = props => {
@@ -68,6 +69,7 @@ export const LayoutSlug = props => {
                 data-ad-slot="3806269138" />
             </section>
 
+            {post.type === 'Post' && <ArticleWechatSpread {...props} /> }
             {post.type === 'Post' && <ArticleCopyright {...props} /> }
             {post.type === 'Post' && <ArticleRecommend {...props} /> }
             {post.type === 'Post' && <ArticleAdjacent {...props} /> }
