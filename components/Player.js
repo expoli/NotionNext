@@ -18,6 +18,7 @@ const Player = () => {
         fixed: true,
         showlrc: showLrc,
         autoplay: autoPlay,
+        mutex: true,
         order: BLOG.MUSIC_PLAYER_ORDER,
         audio: BLOG.MUSIC_PLAYER_AUDIO_LIST
       }))
@@ -32,13 +33,17 @@ const Player = () => {
       <link
         rel="stylesheet"
         type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"
+        href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css"
       />
       {meting
         ? <meting-js
-            fixed
+            fixed="true"
             type="playlist"
+            preload="auto"
+            lrc-type="1"
+            showlrc={showLrc}
             autoplay={autoPlay}
+            mutex={true}
             order={BLOG.MUSIC_PLAYER_ORDER}
             server={BLOG.MUSIC_PLAYER_METING_SERVER}
             id={BLOG.MUSIC_PLAYER_METING_ID}
