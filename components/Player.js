@@ -40,8 +40,7 @@ const Player = () => {
             fixed="true"
             type="playlist"
             preload="auto"
-            lrc-type="1"
-            showlrc={showLrc}
+            lrc-type={BLOG.MUSIC_PLAYER_METING_LRC_TYPE}
             autoplay={autoPlay}
             mutex={true}
             order={BLOG.MUSIC_PLAYER_ORDER}
