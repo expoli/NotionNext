@@ -1,5 +1,6 @@
 /**
  * @author https://github.com/txs
+ * 当配置文件 CODE_MAC_BAR 开启时，此样式会被动态引入，将开启代码组件左上角的mac图标
  **/
 .code-toolbar {
   position: relative;
@@ -8,11 +9,9 @@
   width: 100%;
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
-  /* @apply w-full rounded-lg  */
 }
 
 .toolbar-item{
-  /* @apply whitespace-nowrap */
   white-space: nowrap;
 }
 
@@ -21,7 +20,6 @@
 }
 
 pre[class*='language-'] {
-  @apply mt-0 mb-2 pt-6 !important;
   margin-top: 0rem !important;
   margin-bottom: 0rem !important;
   padding-top: 1.5rem !important;
@@ -29,9 +27,8 @@ pre[class*='language-'] {
 }
 
 .pre-mac {
-  /* @apply left-5 top-2 z-10 absolute */
   position: absolute;
-  left: 1.25rem;
+  left: 0.9rem;
   top: 0.5rem;
   z-index: 10;
 }
@@ -42,7 +39,6 @@ pre[class*='language-'] {
   border-radius: 50%;
   margin-right: 5px;
   float: left;
-  /* @apply float-left */
 }
 
 .pre-mac > span:nth-child(1) {

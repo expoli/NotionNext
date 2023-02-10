@@ -28,7 +28,6 @@ const Catalog = ({ toc }) => {
 
   const throttleMs = 100
   const actionSectionScrollSpy = React.useCallback(throttle(() => {
-    console.log('滚动')
     const sections = document.getElementsByClassName('notion-h')
     let prevBBox = null
     let currentSectionId = activeSection
@@ -65,7 +64,7 @@ const Catalog = ({ toc }) => {
       <Progress />
     </div>
     <div className='overflow-y-auto max-h-96 overscroll-none scroll-hidden' ref={tRef}>
-      <nav className='h-full font-sans text-black'>
+      <nav className='h-full  text-black'>
         {toc.map((tocItem) => {
           const id = uuidToId(tocItem.id)
           tocIds.push(id)
