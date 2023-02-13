@@ -18,6 +18,7 @@ const Player = () => {
         fixed: true,
         showlrc: showLrc,
         autoplay: autoPlay,
+        mutex: true,
         order: BLOG.MUSIC_PLAYER_ORDER,
         audio: BLOG.MUSIC_PLAYER_AUDIO_LIST
       }))
@@ -41,6 +42,7 @@ const Player = () => {
             preload="auto"
             lrc-type={BLOG.MUSIC_PLAYER_METING_LRC_TYPE}
             autoplay={autoPlay}
+            mutex={true}
             order={BLOG.MUSIC_PLAYER_ORDER}
             server={BLOG.MUSIC_PLAYER_METING_SERVER}
             id={BLOG.MUSIC_PLAYER_METING_ID}
