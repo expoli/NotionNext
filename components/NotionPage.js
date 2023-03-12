@@ -4,7 +4,6 @@ import mediumZoom from '@fisch0920/medium-zoom'
 import React from 'react'
 import { isBrowser } from '@/lib/utils'
 import { Code } from 'react-notion-x/build/third-party/code'
-import TweetEmbed from 'react-tweet-embed'
 
 import 'katex/dist/katex.min.css'
 import { mapImgUrl } from '@/lib/notion/mapImage'
@@ -36,10 +35,6 @@ const Collection = dynamic(() =>
 const Modal = dynamic(
   () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal), { ssr: false }
 )
-
-const Tweet = ({ id }) => {
-  return <TweetEmbed tweetId={id} />
-}
 
 const NotionPage = ({ post, className }) => {
   const zoom = isBrowser() && mediumZoom({
@@ -94,8 +89,7 @@ const NotionPage = ({ post, className }) => {
         Collection,
         Equation,
         Modal,
-        Pdf,
-        Tweet
+        Pdf
       }} />
 
       <PrismMac />

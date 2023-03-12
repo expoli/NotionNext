@@ -9,6 +9,7 @@ import React from 'react'
 export const LayoutIndex = (props) => {
   const headerSlot = CONFIG_HEXO.HOME_BANNER_ENABLE && <Header {...props} />
   return <LayoutBase {...props} headerSlot={headerSlot}>
+
     {BLOG.POST_LIST_STYLE === 'page' ? <BlogPostListPage {...props} /> : <BlogPostListScroll {...props} />}
   </LayoutBase>
 }

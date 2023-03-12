@@ -6,7 +6,12 @@ const NotionPage = dynamic(() => import('@/components/NotionPage'))
 const Announcement = ({ post, className }) => {
   const { locale } = useGlobal()
   if (post?.blockMap) {
-    return <div className={className}>
+    return <div
+        data-aos="fade-up"
+        data-aos-duration="300"
+        data-aos-once="false"
+        data-aos-anchor-placement="top-bottom"
+        className={className}>
         <section id='announcement-wrapper' className="hover:shadow-md dark:text-gray-300 border dark:border-black rounded-xl px-2 py-4 bg-white dark:bg-hexo-black-gray">
             <div><i className='mr-2 fas fa-bullhorn' />{locale.COMMON.ANNOUNCEMENT}</div>
             {post && (<div id="announcement-content">

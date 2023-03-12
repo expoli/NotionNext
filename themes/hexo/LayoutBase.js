@@ -14,13 +14,7 @@ import dynamic from 'next/dynamic'
 
 const FacebookPage = dynamic(
   () => {
-    let facebook = <></>
-    try {
-      facebook = import('@/components/FacebookPage')
-    } catch (err) {
-      console.error(err)
-    }
-    return facebook
+    return import('@/components/FacebookPage')
   },
   { ssr: false }
 )
@@ -65,14 +59,14 @@ const LayoutBase = props => {
   }, [])
 
   return (
-    <div id='theme-hexo'>
+    <div id='theme-hexo' className="bg-hexo-background-gray dark:bg-black">
       <CommonHead meta={meta} siteInfo={siteInfo}/>
 
       <TopNav {...props} />
 
       {headerSlot}
 
-      <main id="wrapper" className="bg-hexo-background-gray dark:bg-black w-full py-8 md:px-8 lg:px-24 min-h-screen relative">
+      <main id="wrapper" className="w-full py-8 md:px-8 lg:px-24 min-h-screen relative">
         <div
           id="container-inner"
           className={(BLOG.LAYOUT_SIDEBAR_REVERSE ? 'flex-row-reverse' : '') + ' pt-14 w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'}
