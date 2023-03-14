@@ -38,13 +38,13 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
            <div className="h-auto md:w-5/12">
                 <Link href={`${BLOG.SUB_PATH}/${post.slug}`} passHref legacyBehavior>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {/* <img
+                    <img
                         src={post?.page_cover}
                         alt={post.title}
                         loading='lazy'
                         className="w-full relative cursor-pointer object-cover duration-200 hover:scale-125 "
-                    /> */}
-                    <div className='bg-center bg-cover md:h-full h-52' style={{ backgroundImage: `url(${post?.page_cover})` }}/>
+                    />
+                    {/* <div className='bg-center bg-cover md:h-full h-52' style={{ backgroundImage: `url(${post?.page_cover})` }}/> */}
 
                     {/* <div className='relative w-full h-full'>
                     <Image
