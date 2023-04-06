@@ -40,6 +40,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
                         loading='lazy'
                         className="w-full relative cursor-pointer object-cover duration-200 hover:scale-125 "
                     /> */}
+
                     <div className='bg-center bg-cover md:h-full h-52 hover:scale-110 duration-200' style={{ backgroundImage: `url('${post?.page_cover}')` }}/>
 
                     {/* <div className='relative w-full h-full'>
