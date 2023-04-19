@@ -11,13 +11,6 @@ const WalineComponent = dynamic(
   { ssr: false }
 )
 
-const CusdisComponent = dynamic(
-  () => {
-    return import('@/components/CusdisComponent')
-  },
-  { ssr: false }
-)
-
 const TwikooCompenent = dynamic(
   () => {
     return import('@/components/Twikoo')
@@ -76,10 +69,6 @@ const Comment = ({ frontMatter }) => {
 
         {BLOG.COMMENT_VALINE_APP_ID && (<div key='Valine' name='reply'>
             <ValineComponent path={frontMatter.id}/>
-        </div>)}
-
-        {BLOG.COMMENT_CUSDIS_APP_ID && (<div key='Cusdis'>
-          <CusdisComponent frontMatter={frontMatter}/>
         </div>)}
 
         {BLOG.COMMENT_UTTERRANCES_REPO && (<div key='Utterance'>

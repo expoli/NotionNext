@@ -48,12 +48,14 @@
     "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",
     "react-facebook": "^9.0.12",
+    "react-messenger-customer-chat": "^0.8.0",
     "react-notion-x": "6.16.0",
     "react-share": "^4.4.1",
     "react-tweet-embed": "~2.0.0",
     "smoothscroll-polyfill": "^0.4.4",
     "twikoo": "1.6.16",
     "typed.js": "^2.0.15",
+    "use-ackee": "^3.0.1",
     "valine": "^1.5.1"
   },
   "devDependencies": {
