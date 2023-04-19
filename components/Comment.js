@@ -25,24 +25,13 @@ const TwikooCompenent = dynamic(
   { ssr: false }
 )
 
-const GitalkComponent = dynamic(
-  () => {
-    return import('@/components/Gitalk')
-  },
-  { ssr: false }
-)
 const UtterancesComponent = dynamic(
   () => {
     return import('@/components/Utterances')
   },
   { ssr: false }
 )
-const GiscusComponent = dynamic(
-  () => {
-    return import('@/components/Giscus')
-  },
-  { ssr: false }
-)
+
 const WebMentionComponent = dynamic(
   () => {
     return import('@/components/WebMention')
@@ -89,22 +78,12 @@ const Comment = ({ frontMatter }) => {
             <ValineComponent path={frontMatter.id}/>
         </div>)}
 
-        {BLOG.COMMENT_GISCUS_REPO && (
-          <div key="Giscus">
-            <GiscusComponent className="px-2" />
-          </div>
-        )}
-
         {BLOG.COMMENT_CUSDIS_APP_ID && (<div key='Cusdis'>
           <CusdisComponent frontMatter={frontMatter}/>
         </div>)}
 
         {BLOG.COMMENT_UTTERRANCES_REPO && (<div key='Utterance'>
           <UtterancesComponent issueTerm={frontMatter.id} className='px-2' />
-        </div>)}
-
-        {BLOG.COMMENT_GITALK_CLIENT_ID && (<div key='GitTalk'>
-          <GitalkComponent frontMatter={frontMatter}/>
         </div>)}
 
         {BLOG.COMMENT_WEBMENTION.ENABLE && (<div key='WebMention'>
