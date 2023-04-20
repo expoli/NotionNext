@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import escapeHTML from 'escape-html'
+import sanitizeHtml from 'sanitize-html';
 
 /**
  * 字数统计
@@ -33,7 +33,7 @@ function deleteHtmlTag(str) {
   if (!str) {
     return ''
   }
-  str = escapeHTML(str)// 去掉所有的html标签和&nbsp;之类的特殊符合
+  str = sanitizeHtml(str)// 去掉所有的html标签和&nbsp;之类的特殊符合
   return str
 }
 
