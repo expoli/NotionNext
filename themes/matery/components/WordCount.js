@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import escapeHTML from 'escape-html'
 
 /**
  * 字数统计
@@ -41,7 +42,7 @@ function deleteHtmlTag(str) {
   if (!str) {
     return ''
   }
-  str = str.replace(/<[^>]+>|&[^>]+;/g, '').trim()// 去掉所有的html标签和&nbsp;之类的特殊符合
+  str = escapeHTML(str)
   return str
 }
 

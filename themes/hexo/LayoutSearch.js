@@ -10,12 +10,14 @@ import Mark from 'mark.js'
 import TagItemMini from './components/TagItemMini'
 import Card from './components/Card'
 import Link from 'next/link'
+import escapeHTML from 'escape-html'
 
 export const LayoutSearch = props => {
   const { keyword, tagOptions, categoryOptions } = props
   const { locale } = useGlobal()
   const router = useRouter()
-  const currentSearch = keyword || router?.query?.s
+  const tempSearch = escapeHTML(keyword || router?.query?.s)
+  const currentSearch = tempSearch
   const cRef = useRef(null)
 
   useEffect(() => {
