@@ -52,6 +52,7 @@
     "react-notion-x": "6.16.0",
     "react-share": "^4.4.1",
     "react-tweet-embed": "~2.0.0",
+    "sanitize-html": "^2.10.0",
     "smoothscroll-polyfill": "^0.4.4",
     "twikoo": "1.6.16",
     "typed.js": "^2.0.15",
