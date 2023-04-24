@@ -1,6 +1,6 @@
 {
   "name": "notion-next",
-  "version": "3.13.3",
+  "version": "3.13.4",
   "homepage": "https://github.com/tangly1024/NotionNext.git",
   "license": "MIT",
   "repository": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^13.3.0",
     "@popperjs/core": "^2.11.7",
-    "@vercel/analytics": "^0.1.11",
+    "@vercel/analytics": "^1.0.0",
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "aos": "^3.0.0-beta.6",
