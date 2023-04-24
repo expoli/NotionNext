@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { createPopper } from '@popperjs/core'
 import copy from 'copy-to-clipboard'
-import QRCode from 'qrcode.react'
 import { useGlobal } from '@/lib/global'
 import CONFIG_NEXT from '../config_next'
 
@@ -15,20 +14,6 @@ const ShareBar = ({ post }) => {
     return <></>
   }
   const shareUrl = BLOG.LINK + router.asPath
-
-  // 二维码悬浮
-  const btnRef = React.createRef()
-  const popoverRef = React.createRef()
-
-  const openPopover = () => {
-    createPopper(btnRef.current, popoverRef.current, {
-      placement: 'top'
-    })
-    setQrCodeShow(true)
-  }
-  const closePopover = () => {
-    setQrCodeShow(false)
-  }
 
   const copyUrl = () => {
     copy(shareUrl)

@@ -6,11 +6,12 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Mark from 'mark.js'
 import { isBrowser } from '@/lib/utils'
+import sanitizeHtml from 'sanitize-html';
 
 export const LayoutSearch = (props) => {
   const { keyword } = props
   const router = useRouter()
-  const currentSearch = keyword || router?.query?.s
+  const currentSearch = sanitizeHtml(keyword || router?.query?.s)
   useEffect(() => {
     setTimeout(() => {
       const container = isBrowser() && document.getElementById('container')

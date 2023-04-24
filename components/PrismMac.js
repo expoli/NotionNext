@@ -12,6 +12,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 // mermaid图
 import BLOG from '@/blog.config'
 import { isBrowser, loadExternalResource } from '@/lib/utils'
+import sanitizeHtml from 'sanitize-html';
 
 /**
  * @author https://github.com/txs/
@@ -43,7 +44,7 @@ const renderMermaid = async() => {
   const mermaidPres = document.querySelectorAll('pre.notion-code.language-mermaid')
   if (mermaidPres) {
     for (const e of mermaidPres) {
-      const chart = e.querySelector('code').textContent
+      const chart = sanitizeHtml(e.querySelector('code').textContent)
       if (chart && !e.querySelector('.mermaid')) {
         const m = document.createElement('div')
         m.className = 'mermaid'
