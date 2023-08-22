@@ -35,5 +35,8 @@ jobs:
       - name: install requests
         run: pip install requests
 
-      - name: baidupush
-        run: npm run baidupush
+      - name: baidu_push
+        run: |
+          python baidupush.py "$WEB_DOMAIN"
+          curl -H 'Content-Type:text/plain' --data-binary @urls.txt "$BAIDU_PUSH_URL"
+          rm -rf urls.txt
