@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next-sitemap --config next-sitemap.config.js && next export",
     "start": "next start",
     "post-build": "next-sitemap --config next-sitemap.config.js",
     "export": "next build && next-sitemap --config next-sitemap.config.js && next export",
@@ -28,8 +29,8 @@
     "algoliasearch": "^4.18.0",
     "animejs": "^3.2.1",
     "aos": "^3.0.0-beta.6",
-    "axios": ">=0.21.1",
-    "copy-to-clipboard": "^3.3.1",
+    "axios": "^1.3.5",
+    "copy-to-clipboard": "^3.3.3",
     "eslint-plugin-react-hooks": "^4.6.0",
     "feed": "^4.2.2",
     "js-md5": "^0.7.3",
@@ -41,7 +42,7 @@
     "notion-client": "6.15.6",
     "notion-utils": "6.15.6",
     "nprogress": "^0.2.0",
-    "preact": "^10.5.15",
+    "preact": "^10.13.2",
     "prism-themes": "1.9.0",
     "react": "^18.2.0",
     "react-cookies": "^0.1.1",
@@ -53,12 +54,12 @@
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
-    "@waline/client": "^2.5.1",
-    "autoprefixer": "^10.4.13",
-    "eslint": "^7.26.0",
-    "eslint-config-next": "^13.1.1",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.23.0",
+    "@waline/client": "^2.15.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-config-next": "^13.3.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.23.2",
@@ -68,7 +69,7 @@
     "webpack-bundle-analyzer": "^4.5.0"
   },
   "resolutions": {
-    "axios": ">=0.21.1"
+    "axios": ">=1.2"
   },
   "bugs": {
     "url": "https://github.com/tangly/NotionNext/issues",

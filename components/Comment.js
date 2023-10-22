@@ -12,13 +12,6 @@ const WalineComponent = dynamic(
   { ssr: false }
 )
 
-const CusdisComponent = dynamic(
-  () => {
-    return import('@/components/CusdisComponent')
-  },
-  { ssr: false }
-)
-
 const TwikooCompenent = dynamic(
   () => {
     return import('@/components/Twikoo')
@@ -26,24 +19,13 @@ const TwikooCompenent = dynamic(
   { ssr: false }
 )
 
-const GitalkComponent = dynamic(
-  () => {
-    return import('@/components/Gitalk')
-  },
-  { ssr: false }
-)
 const UtterancesComponent = dynamic(
   () => {
     return import('@/components/Utterances')
   },
   { ssr: false }
 )
-const GiscusComponent = dynamic(
-  () => {
-    return import('@/components/Giscus')
-  },
-  { ssr: false }
-)
+
 const WebMentionComponent = dynamic(
   () => {
     return import('@/components/WebMention')

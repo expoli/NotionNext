@@ -1,5 +1,6 @@
 import { useGlobal } from '@/lib/global'
 import { useEffect } from 'react'
+import sanitizeHtml from 'sanitize-html';
 
 /**
  * 字数统计
@@ -43,7 +44,7 @@ function deleteHtmlTag(str) {
   if (!str) {
     return ''
   }
-  str = str.replace(/<[^>]+>|&[^>]+;/g, '').trim()// 去掉所有的html标签和&nbsp;之类的特殊符合
+  str = sanitizeHtml(str)
   return str
 }
 
