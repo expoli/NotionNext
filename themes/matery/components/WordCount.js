@@ -1,3 +1,4 @@
+import { useGlobal } from '@/lib/global'
 import { useEffect } from 'react'
 import sanitizeHtml from 'sanitize-html';
 
@@ -6,6 +7,7 @@ import sanitizeHtml from 'sanitize-html';
  * @returns
  */
 export default function WordCount() {
+  const { locale } = useGlobal()
   useEffect(() => {
     countWords()
   })
@@ -13,13 +15,13 @@ export default function WordCount() {
   return <span id='wordCountWrapper' className='flex gap-3 font-light'>
         <span className='flex whitespace-nowrap items-center'>
             <i className='pl-1 pr-2 fas fa-file-word' />
-            <span>文章字数</span>&nbsp;
+            <span>{locale.COMMON.WORD_COUNT}</span>&nbsp;
             <span id='wordCount'>0</span>
         </span>
         <span className='flex whitespace-nowrap items-center'>
             <i className='mr-1 fas fa-clock' />
-            <span>阅读时长:</span>
-            <span id='readTime'>0</span>分钟
+            <span></span>
+            <span id='readTime'>0</span>&nbsp;{locale.COMMON.MINUTE}
         </span>
     </span>
 }
