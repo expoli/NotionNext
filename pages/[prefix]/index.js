@@ -13,6 +13,12 @@ import md5 from 'js-md5'
 import { useRouter } from 'next/router'
 import { idToUuid } from 'notion-utils'
 import { useEffect, useState } from 'react'
+import crypto from 'crypto'
+
+const encrypt = (text) => {
+  const cipher = crypto.createCipher('aes-256-ctr', 'password')
+  return cipher.update(text, 'utf8', 'hex') + cipher.final('hex')
+}
 
 /**
  * 根据notion的slug访问页面
@@ -41,7 +47,7 @@ const Slug = props => {
     if (passInput && encrypt === post?.password) {
       setLock(false)
       // 输入密码存入localStorage，下次自动提交
-      localStorage.setItem('password_' + router.asPath, passInput)
+      localStorage.setItem('password_' + router.asPath, encrypt(passInput))
       showNotification(locale.COMMON.ARTICLE_UNLOCK_TIPS) // 设置解锁成功提示显示
       return true
     }
