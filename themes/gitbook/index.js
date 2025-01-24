@@ -622,3 +622,4 @@ export {
     LayoutTagIndex,
     CONFIG as THEME_CONFIG
 }
+
